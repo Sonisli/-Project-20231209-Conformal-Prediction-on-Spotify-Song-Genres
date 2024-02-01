@@ -14591,9 +14591,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Abstract">Abstract<a class="anchor-link" href="#Abstract">&#182;</a></h2><ol>
-<li>training a neural network on your data, including a plot of your loss vs. training iteration;</li>
-<li>a prediction interval calculated using conformal inference, including a written explanation of the result;</li>
-<li>a hypothesis test, including a written explanation of why you chose that specific hypothesis test, and an explanation of the results of the test.</li>
+<li>train a neural network on data, including a plot of loss vs. training iteration;</li>
+<li>ouput a prediction interval calculated using conformal inference, and explain the result;</li>
+<li>conduct a hypothesis test, and explain the result and reason of choosing that specific hypothesis test.</li>
 </ol>
 
 </div>
@@ -14703,7 +14703,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-Formulation">Problem Formulation<a class="anchor-link" href="#Problem-Formulation">&#182;</a></h2><h3 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h3><p>To better make decides on genre classification of songs.We woud like to predict the likelihood of a song's genre mainly based on its sound features, using Neural Network with Conformal Prediction.</p>
+<h2 id="Problem-Formulation">Problem Formulation<a class="anchor-link" href="#Problem-Formulation">&#182;</a></h2><h3 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h3><p>To better make decides on genre classification of songs. We woud like to predict the likelihood of a song's genre mainly based on its sound features, using Neural Network with Conformal Prediction.</p>
 
 </div>
 </div>
@@ -15239,7 +15239,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Neural-Network">Neural Network<a class="anchor-link" href="#Neural-Network">&#182;</a></h2><p>Create a feed-forward neural network to predict movie genres</p>
+<h2 id="Neural-Network">Neural Network<a class="anchor-link" href="#Neural-Network">&#182;</a></h2><p>Create a feed-forward neural network to predict song genres</p>
 
 </div>
 </div>
@@ -15302,7 +15302,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Train the neural network to predict movie genres</p>
+<p>Train the neural network to predict song genres</p>
 
 </div>
 </div>
@@ -15498,14 +15498,14 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sequence: list of binary values, each value corresponds to an outcome (e.g., whether a movie belongs to a certain genre).</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># sequence: list of binary values, each value corresponds to an outcome (e.g., whether a song belongs to a certain genre).</span>
 <span class="c1"># probs: list of probabilities, each value is the probability of the corresponding outcome being 1.</span>
 <span class="c1"># The function iterates through each outcome in the sequence.</span>
 <span class="c1"># - For each outcome, check if the outcome is 1 (presence of a genre) or 0 (absence).</span>
 <span class="c1"># --- If outcome is 1, takes the corresponding probability from probs.</span>
 <span class="c1"># --- If outcome is 0, calculates (1 - probability) to get the probability of the outcome not occurring.</span>
 <span class="c1"># - All these probabilities are then multiplied together to get the joint probability of the entire sequence.</span>
-<span class="c1"># thus calculates the probability of a specific combination of genres being present or absent for a movie.</span>
+<span class="c1"># thus calculates the probability of a specific combination of genres being present or absent for a song.</span>
 <span class="k">def</span> <span class="nf">computeProbability</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">probs</span><span class="p">):</span>
     <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">([</span><span class="n">probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">sequence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">))]))</span>
 
